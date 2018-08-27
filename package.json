@@ -17,6 +17,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.5.1"
+    "babel-eslint": "^8.2.6",
+    "babel-plugin-styled-components": "^1.5.1",
+    "eslint": "^5.4.0"
   }
 }
