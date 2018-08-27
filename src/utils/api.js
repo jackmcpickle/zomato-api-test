@@ -7,6 +7,7 @@ headers.append('user-key', '56c7d984cb0e2be817ee1c92947d40e6');
 const fetchConfig = {
   method: 'GET',
   headers: headers,
+  mode: 'cors',
   cache: 'default'
 }
 
