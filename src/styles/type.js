@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {GREY} from './colours';
+import {GREY, BLACK} from './colours';
 
 
 export const SmallHeading = styled.h2`
@@ -9,3 +9,9 @@ export const SmallHeading = styled.h2`
   color: ${GREY};
   margin-bottom: 1rem;
 `;
+
+export const Title = styled.h2`
+  margin-top: 0;
+  font-size: 3rem;
+  color: ${BLACK}
+`
