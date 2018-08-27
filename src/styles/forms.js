@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import Checkbox from 'rc-checkbox';
+import {BLUE, LIGHT_BLUE, LIGHT_GREY, GHOST, GREY, WHITE} from './colours';
+import Slider from 'rc-slider';
+const Range = Slider.Range;
 
 export const Label = styled.label`
   display: block;
@@ -22,24 +25,24 @@ export const StyledCheckBox = styled.div`
   left: 0;
   height: 20px;
   width: 20px;
-  background-color: #e6e6e6;
+background-color: ${GHOST};
 
   ${Label} .rc-checkbox:focus &,
   ${Label}:hover & {
-    background-color: #ccc;
+    background-color ${LIGHT_GREY};
   }
 
   ${Label} .rc-checkbox-checked ~ & {
-    background-color: #2aa1c0;
+    background-color: ${LIGHT_BLUE};
   }
 
-  ${Label}:hover .rc-checkbox:not([.rc-checkbox-disabled]):checked ~ &,
+  ${Label}:hover .rc-checkbox-checked:not([.rc-checkbox-disabled]) ~ &,
   ${Label} .rc-checkbox-checked:focus ~ & {
-    background: #0e647d;
+    background: ${BLUE};
   }
 
   ${Label} .rc-checkbox-disabled ~ & {
-    background: #e6e6e6;
+  background: ${GHOST};
     opacity: 0.6;
     pointer-events: none;
   }
@@ -51,7 +54,7 @@ export const StyledCheckBox = styled.div`
     top: 4px;
     width: 3px;
     height: 8px;
-    border: solid #fff;
+    border: solid ${WHITE};
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
     display: none;
@@ -62,6 +65,10 @@ export const StyledCheckBox = styled.div`
   }
 
   ${Label} .rc-checkbox-disabled ~ &:after {
-    border-color: #7b7b7b;
+    border-color: ${GREY};
   }
+`;
+
+export const StyledRange = styled(Range)`
+  height: 40px;
 `;

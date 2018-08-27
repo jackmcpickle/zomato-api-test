@@ -3,6 +3,7 @@ import {SmallHeading} from '../styles/type';
 import {HeaderWrap, Grid} from '../styles/layout';
 import {CategoryList} from './CategoryList';
 import {CuisinesList} from './CuisinesList';
+import {Filters} from './Filters';
 
 export class Header extends Component {
   render() {
@@ -17,7 +18,7 @@ export class Header extends Component {
           <CuisinesList limit="12"></CuisinesList>
         </Grid>
         <Grid size="3">
-          here
+          <Filters/>
         </Grid>
       </HeaderWrap>
     )

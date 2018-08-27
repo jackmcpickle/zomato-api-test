@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'rc-slider/assets/index.css';
 import './index.css';
 import {Header} from './modules/Header';
 import {Body} from './modules/Body';

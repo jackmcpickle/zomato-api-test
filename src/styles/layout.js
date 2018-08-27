@@ -13,8 +13,15 @@ export const HeaderWrap = styled.header`
   padding: 4rem;
 `;
 
+export const Row = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
+
 export const Grid = styled.div`
   width: 100%;
+  padding: 1rem 0;
+
   @media(min-width: 900px) {
     width: ${props => (props.size / 12) * 100}%;
   }
@@ -28,6 +35,6 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   display: inline-block;
-  min-width: 200px;
+  min-width: 130px;
   margin-bottom: 0.5rem;
 `;
