@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "event-emitter": "^0.3.5",
     "rc-checkbox": "^2.1.5",
     "rc-slider": "^8.6.1",
     "react": "^16.4.2",
@@ -17,6 +18,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "@types/event-emitter": "^0.3.2",
     "babel-eslint": "^8.2.6",
     "babel-plugin-styled-components": "^1.5.1",
     "eslint": "^5.4.0"
