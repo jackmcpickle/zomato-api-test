@@ -1,27 +1,39 @@
 import React, { Component } from 'react';
-import {zomatoGet} from '../utils/api';
-import {Category} from './Category';
+import {Checkbox} from './Checkbox';
 import {List} from '../styles/layout';
-
-const ADELAIDE_CITY_ID = '297';
+import {appAction} from '../actions/appAction';
+import {Store} from '../stores/appStore';
 
 export class CuisinesList extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      cuisines: []
+      cuisines: Store.cuisines
     }
   }
 
   componentDidMount() {
-    zomatoGet(`cuisines?city_id=${ADELAIDE_CITY_ID}`)
-    .then( data => this.setState({cuisines: data.cuisines}) )
+    appAction.on('store:updated', this.update.bind(this))
+  }
+
+  componentWillUnmount() {
+    appAction.off('store:updated', this.update)
+  }
+
+  update(data) {
+    this.setState({
+      cuisines: Store.cuisines
+    })
+  }
+
+  onUpdate(data) {
+    appAction.emit('cuisines:update', data)
   }
 
   mapCuisines() {
-    return this.state.cuisines.slice(0, this.props.limit).map( (cat) =>
-      <Category key={cat.cuisine.cuisine_id}>{cat.cuisine.cuisine_name}</Category>
+    return this.state.cuisines.slice(0, this.props.limit).map( (item) =>
+      <Checkbox key={item.cuisine.cuisine_id} onUpdate={this.onUpdate} id={item.cuisine.cuisine_id}>{item.cuisine.cuisine_name}</Checkbox>
     );
   }
 

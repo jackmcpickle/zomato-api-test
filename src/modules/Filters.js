@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {SmallHeading} from '../styles/type';
 import {StyledRange} from '../styles/forms';
+import {appAction} from '../actions/appAction';
 // import {BLUE} from '../styles/colours';
 
 const priceMarks = {
@@ -18,15 +19,37 @@ const ratingMarks = {
   5: '5'
 }
 
+
+
 export class Filters extends Component {
+
+  constructor(props) {
+    super(props);
+    this.price = React.createRef();
+    this.rating = React.createRef();
+  } 
+  
+
+  componentDidMount() {
+    appAction.emit('rating:update', this.rating.current.props.defaultValue)
+    appAction.emit('price:update', this.price.current.props.defaultValue)
+  }
+
+  updateRating(data) {
+    appAction.emit('rating:update', data)
+  }
+  
+  updatePrice(data) {
+    appAction.emit('price:update', data)
+  }
 
   render() {
     return (
       <div>
         <SmallHeading>Rating</SmallHeading>
-        <StyledRange min={1} max={5} marks={ratingMarks} step={1} defaultValue={[3,5]} />
+        <StyledRange ref={this.rating} min={1} max={5} onChange={this.updateRating} marks={ratingMarks} step={1} defaultValue={[3,5]} />
         <SmallHeading>Price</SmallHeading>
-        <StyledRange min={1} max={4} step={1} marks={priceMarks} defaultValue={[2,3]} />
+        <StyledRange ref={this.price} min={1} max={4} onChange={this.updatePrice} step={1} marks={priceMarks} defaultValue={[2,3]} />
       </div>
     );
   }
