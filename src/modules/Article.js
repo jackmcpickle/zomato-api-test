@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import { zomatoGet } from '../utils/api';
 import {Row, Grid} from '../styles/layout';
 import {Title} from '../styles/type';
-
+import { appAction } from '../actions/appAction';
+import {Store} from '../stores/appStore';
 
 export class Article extends Component {
 
@@ -14,10 +14,22 @@ export class Article extends Component {
   }
 
   componentDidMount() {
-    zomatoGet(`restaurant?res_id=16774318`).then( data => this.setState({ restaurant: data }))
+    appAction.on('store:updated', this.update.bind(this))
+  }
+
+  componentWillUnmount() {
+    appAction.off('store:updated', this.update.bind(this))
+  }
+
+  update(data) {
+    this.setState({
+      restaurant: Store.restaurant
+    })
   }
 
   render() {
+    console.log(this.state.restaurant);
+    
     if (this.state.restaurant) {
       const rest = this.showRestautant();
       return (rest)

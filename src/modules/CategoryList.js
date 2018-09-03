@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Store} from '../stores/appStore';
-import {Checkbox} from './Checkbox';
-import {List} from '../styles/layout';
+import { Store } from '../stores/appStore';
+import { Checkbox } from './Checkbox';
+import { List } from '../styles/layout';
 import { appAction } from '../actions/appAction';
 
 export class CategoryList extends Component {

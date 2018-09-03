@@ -1,14 +1,14 @@
 import React from 'react';
-import {Row, Grid} from '../styles/layout';
+import {Row, Grid, SideBarStyle} from '../styles/layout';
 import { Sidebar } from './Sidebar';
 import { Article } from './Article';
 
 
 export const Body = () => (
   <Row>
-    <Grid size="4">
+    <SideBarStyle size="4">
       <Sidebar/>
-    </Grid>
+    </SideBarStyle>
     <Grid size="8">
       <Article/>
     </Grid>

@@ -19,8 +19,6 @@ const ratingMarks = {
   5: '5'
 }
 
-
-
 export class Filters extends Component {
 
   constructor(props) {

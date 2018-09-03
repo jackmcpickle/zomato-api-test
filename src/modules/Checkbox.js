@@ -6,7 +6,7 @@ export class Checkbox extends Component {
 
   onUpdate(e) {
     this.props.onUpdate({
-      name: this.props.children,
+      id: this.props.id,
       checked: e.target.checked
     })
   }

@@ -1,3 +1,5 @@
+import { appAction } from "../actions/appAction";
+
 const ZOMATO_URL = 'https://developers.zomato.com/api/v2.1/';
 
 const headers = new Headers();
@@ -15,7 +17,8 @@ const localStorageExists = () => typeof(localStorage) !== undefined;
 
 class ZomatoAPI {
 
-  constructor(asset) {
+  constructor(asset, cache = true) {
+    this.cache = cache;
     this.request = new Request(`${ZOMATO_URL}${asset}`);
   }
 
@@ -24,7 +27,7 @@ class ZomatoAPI {
   }
 
   _hasCache() {
-    return localStorageExists() && localStorage.getItem(this.request.url) !== null;
+    return this.cache && localStorageExists() && localStorage.getItem(this.request.url) !== null;
   }
 
   _getCached() {
@@ -39,11 +42,12 @@ class ZomatoAPI {
   }
 
   _fetch() {
-    return fetch(this.request, fetchConfig).then( (response) => response.json() ).then( this._store.bind(this) );
+    appAction.emit('api:fetching');
+    return fetch(this.request, fetchConfig).then( (response) => response.json() ).then( this._store.bind(this) ).then( (data) => { appAction.emit('api:fetched'); return data } );
   }
 }
 
-export const zomatoGet = (asset) => {
-  const zomatoAPI = new ZomatoAPI(asset);
+export const zomatoGet = (asset, cache) => {
+  const zomatoAPI = new ZomatoAPI(asset, cache);
   return zomatoAPI.get();
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {WHITE} from './colours';
+import {WHITE, LIGHT_GREY, GHOST, LIGHT_BLUE} from './colours';
 
 export const Container = styled.div`
   max-width: 1240px;
@@ -9,6 +9,7 @@ export const Container = styled.div`
 export const HeaderWrap = styled.header`
   display: flex;
   flex-wrap: wrap;
+  position: relative;
   background-color: ${WHITE};
   padding: 4rem;
 `;
@@ -38,3 +39,27 @@ export const ListItem = styled.li`
   min-width: 130px;
   margin-bottom: 0.5rem;
 `;
+
+export const SideBarStyle = styled(Grid)`
+  background-color: ${GHOST};
+`;
+
+export const RestName = styled.li`
+  padding: 0.7rem 2rem;
+  border-bottom: 1px solid ${LIGHT_GREY};
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${LIGHT_BLUE};
+    color: ${WHITE};
+  }
+`
+export const HeaderLock = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background-color: rgba(255, 255, 255, 0.5);
+`
