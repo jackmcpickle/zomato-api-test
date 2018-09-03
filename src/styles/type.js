@@ -12,8 +12,16 @@ export const SmallHeading = styled.h2`
 
 export const Title = styled.h2`
   margin-top: 0;
+  margin-bottom: 0;
   font-size: 3rem;
   color: ${BLACK};
+`;
+
+export const SubTitle = styled.h3`
+  margin: 0;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  color: ${GREY};
 `;
 
 export const SmallListHeading = styled(SmallHeading)`

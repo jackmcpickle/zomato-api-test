@@ -22,6 +22,7 @@ export const Row = styled.div`
 export const Grid = styled.div`
   width: 100%;
   padding: 1rem 0;
+  flex-grow: ${props => (props.grow ? 1 : 0)};
 
   @media(min-width: 900px) {
     width: ${props => (props.size / 12) * 100}%;
@@ -62,4 +63,7 @@ export const HeaderLock = styled.div`
   right: 0;
   z-index: 99;
   background-color: rgba(255, 255, 255, 0.5);
+`
+export const RestaurantShow = styled(Row)`
+  padding: 2rem;
 `
