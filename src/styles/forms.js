@@ -25,7 +25,7 @@ export const StyledCheckBox = styled.div`
   left: 0;
   height: 20px;
   width: 20px;
-background-color: ${GHOST};
+  background-color: ${GHOST};
 
   ${Label} .rc-checkbox:focus &,
   ${Label}:hover & {
